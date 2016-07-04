@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 
+//预定义栈中元素类型，后期修改类型只需要修改此处
 typedef char stackElementT;
 
 typedef struct

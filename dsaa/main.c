@@ -12,6 +12,7 @@
 #include "fibo.h"
 #include "stack.h"
 #include <stdlib.h>
+#include "stack_linkedlist.h"
 
 int main(int argc, const char * argv[])
 {
@@ -31,6 +32,8 @@ int main(int argc, const char * argv[])
 
     //栈
     stackT * stack = (stackT*)malloc(sizeof(stackT));
+    stackT stack2;
+    
     //初始化
     stackInit(stack, 10);
     int isEmpty = stackIsEmpty(stack);
@@ -52,6 +55,53 @@ int main(int argc, const char * argv[])
         printf("第%d次出栈的元素是:%c\n",i++,stackPop(stack));
     }
     
+    stackDestroy(stack);
+    free(stack);
+    
+    stackInit(&stack2,5);
+    printf("The stack is Empty?%s\n",isEmpty==1?"true":"false");
+    stackPush(&stack2, 'a');
+    stackPush(&stack2, 'b');
+    stackPush(&stack2, 'c');
+    stackPush(&stack2, 'd');
+    stackPush(&stack2, 'e');
+    
+    printf("The stack is full?%s\n",stackIsFull(&stack2)==1?"true":"false");
+    
+    i=0;
+    while(!stackIsEmpty(&stack2))
+    {
+      printf("第%d次出栈的元素是:%c\n",i++,stackPop(&stack2));
+    }
+    stackDestroy(&stack2);
+    
+    
+    
+    ///使用LinkedList实现的Stack
+    stackLLT stackll;
+    
+    stackllInit(&stackll);
+    
+    stackNode * node1 = (stackNode *)malloc(sizeof(stackNode));
+    stackNode * node2= (stackNode *)malloc(sizeof(stackNode));
+    stackNode * node3= (stackNode *)malloc(sizeof(stackNode));
+    node1->value = 'z';
+    node1->next = NULL;
+    stackllPush(&stackll, node1);
+    node2->value='y';
+    node2->next = NULL;
+    stackllPush(&stackll, node2);
+    node3->value='x';
+    node3->next = NULL;
+    stackllPush(&stackll, node3);
+    
+    i = 0;
+    while(!stackllIsEmpty(&stackll))
+    {
+        stackElementT result = stackllPop(&stackll);
+        printf("第%d次出栈的元素是:%c\n",i++,result);
 
+    }
+    stackllDestroy(&stackll);
     return 0;
 }
