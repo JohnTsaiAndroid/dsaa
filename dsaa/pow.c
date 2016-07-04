@@ -7,7 +7,8 @@
 //
 
 #include <stdio.h>
-double pow_recursive(double a,int n){
+double pow_recursive(double a,int n)
+{
     if (n==0)
         return 1;
     if(n==1)
@@ -16,7 +17,8 @@ double pow_recursive(double a,int n){
     return t*t*pow_recursive(a,n%2);
 }
 
-double pow_non_recursive(double a,int n){
+double pow_non_recursive(double a,int n)
+{
     double result = 1;
     while(n){
         if(n%2==1) result*=a;

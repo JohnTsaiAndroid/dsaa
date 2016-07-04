@@ -9,7 +9,8 @@
 #include "gcd.h"
 
 // 辗转相除法获得最大公约数
-int gcd(int a,int b){
+int gcd(int a,int b)
+{
     int dividor = a>b?a:b;
     int dividend = a<=b?a:b;
     while(dividor%dividend!=0){
