@@ -34,12 +34,12 @@ void stackllPush(stackLLT * stack,stackNode * node)
 {
     if(stackllIsEmpty(stack))
     {
-        stack->top = node;
+       stack->top = node;
     }
     else
     {
-    node->next = stack->top;
-    stack->top = node;
+       node->next = stack->top;
+       stack->top = node;
     }
 }
 

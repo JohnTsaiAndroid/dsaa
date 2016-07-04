@@ -13,6 +13,7 @@
 #include "stack.h"
 #include <stdlib.h>
 #include "stack_linkedlist.h"
+#include "queue.h"
 
 int main(int argc, const char * argv[])
 {
@@ -103,5 +104,16 @@ int main(int argc, const char * argv[])
 
     }
     stackllDestroy(&stackll);
+    
+    queueT *queue = (queueT *)malloc(sizeof(queueT));
+    createQueue(queue);
+    enqueueQueue(queue, 1);
+    enqueueQueue(queue, 2);
+    enqueueQueue(queue, 3);
+    i = 0;
+    while(queue->front!=NULL)
+    {
+        printf("第%d个从队列中出来的元素是%d\n",i++,dequeueQueue(queue));
+    }
     return 0;
 }
