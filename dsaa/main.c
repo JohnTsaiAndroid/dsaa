@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include "stack_linkedlist.h"
 #include "queue.h"
+#include "queue_array.h"
 
 int main(int argc, const char * argv[])
 {
@@ -113,7 +114,38 @@ int main(int argc, const char * argv[])
     i = 0;
     while(queue->front!=NULL)
     {
+        printf("当前队列最前面的元素是%d\t",peekQueue(queue));
         printf("第%d个从队列中出来的元素是%d\n",i++,dequeueQueue(queue));
     }
+    
+    queueArray* queueArray = createQueueArray();
+    for(int k = 0;k<100;k++)
+    {
+        enqueQueue(queueArray, k);
+    }
+    
+    printf("队列是否已满:%s\n",isFullQueue(queueArray)>0?"true":"false");
+    
+    
+    for(int k = 0;k<50;k++)
+    {
+        queueArrayElement e = dequeQueue(queueArray);
+        printf("出队的元素是:%d\n",e);
+    }
+    
+    printf("队列是否已空:%s\n",isEmptyQueue(queueArray)>0?"true":"false");
+    
+    for(int k = 0;k<50;k++)
+    {
+        enqueQueue(queueArray, k);
+    }
+    
+    for(int k = 0;k<100;k++)
+    {
+        queueArrayElement e = dequeQueue(queueArray);
+        printf("出队的元素是:%d\n",e);
+    }
+
+
     return 0;
 }
