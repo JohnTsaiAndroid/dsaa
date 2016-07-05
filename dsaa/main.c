@@ -15,6 +15,7 @@
 #include "stack_linkedlist.h"
 #include "queue.h"
 #include "queue_array.h"
+#include "linkedlist.h"
 
 int main(int argc, const char * argv[])
 {
@@ -145,7 +146,28 @@ int main(int argc, const char * argv[])
         queueArrayElement e = dequeQueue(queueArray);
         printf("出队的元素是:%d\n",e);
     }
-
-
-    return 0;
+    
+    linkedList *list = createLinkedList();
+    for(int k = 0;k<20;k++)
+    {
+        insertLinkedList(list, 2*k-1);
+    }
+    printLinkedList(list);
+    
+    printf("\n删除前linkedlist的长度是%d\n",sizeofLinkedList(list));
+    
+    linkedListElementT element =  removeLinkedList(list, 5);
+    printf("从linkedlist删除的第%d个元素是%d\n",5,element);
+    
+    printLinkedList(list);
+    
+    printf("\n删除后linkedlist的长度是%d\n",sizeofLinkedList(list));
+    printf("linkedlist是否为空%s\n",isEmptyLinkedList(list)>0?"true":"false");
+    
+    for(int k = 0;k<5;k++)
+    {
+        printf("在linkedlist中查找%d的下标是%d\n",k,searchLinkedList(list,k));
+    }
+    
+       return 0;
 }
