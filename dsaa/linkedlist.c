@@ -64,7 +64,9 @@ linkedListElementT removeLinkedList(linkedList * list,int index)
     }
     if(index == 1){
         linkedListElementT value = list->head->value;
+        linkedListNode * toRemove = list->head;
         list->head = list->head->next;
+        free(toRemove);
         return value;
     }
     linkedListNode * cur = list->head;
