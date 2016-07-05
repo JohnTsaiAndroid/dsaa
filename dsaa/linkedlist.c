@@ -62,6 +62,11 @@ linkedListElementT removeLinkedList(linkedList * list,int index)
         printf("wrong argument index %d",index);
         exit(1);
     }
+    if(index == 1){
+        linkedListElementT value = list->head->value;
+        list->head = list->head->next;
+        return value;
+    }
     linkedListNode * cur = list->head;
     for(int i = 1;i< index-1;i++){
         cur = cur->next;
