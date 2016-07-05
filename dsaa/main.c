@@ -156,7 +156,7 @@ int main(int argc, const char * argv[])
     
     printf("\n删除前linkedlist的长度是%d\n",sizeofLinkedList(list));
     
-    linkedListElementT element =  removeLinkedList(list, 5);
+    linkedListElementT element =  removeLinkedList(list, 1);
     printf("从linkedlist删除的第%d个元素是%d\n",5,element);
     
     printLinkedList(list);
