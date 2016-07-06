@@ -17,6 +17,7 @@
 #include "queue_array.h"
 #include "linkedlist.h"
 #include "deque.h"
+#include "binary_search_tree.h"
 
 int main(int argc, const char * argv[])
 {
@@ -203,5 +204,30 @@ int main(int argc, const char * argv[])
     }
     
     printf("\n双端队列是否为空:%s\n",is_empty_deque(d)?"是":"否");
+    
+    
+    //二叉搜索树
+    
+    binaryTreeNode * root = NULL;
+    insert_bst(&root,10);
+    insert_bst(&root, 8);
+    insert_bst(&root, 7);
+    insert_bst(&root, 9);
+    insert_bst(&root, 12);
+    insert_bst(&root, 11);
+    insert_bst(&root, 13);
+    
+    printf("\n前序遍历:\n");
+    print_preorder(root);
+    printf("\n中序遍历:\n");
+    print_inorder(root);
+    printf("\n后序遍历:\n");
+    print_postorder(root);
+    
+    binaryTreeNode * temp = search_bst(&root, 11);
+    printf("%d",temp->value);
+    
+    destroy_bst(root);
+    
     return 0;
 }
