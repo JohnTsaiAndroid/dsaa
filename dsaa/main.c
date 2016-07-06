@@ -16,6 +16,7 @@
 #include "queue.h"
 #include "queue_array.h"
 #include "linkedlist.h"
+#include "deque.h"
 
 int main(int argc, const char * argv[])
 {
@@ -169,5 +170,38 @@ int main(int argc, const char * argv[])
         printf("在linkedlist中查找%d的下标是%d\n",k,searchLinkedList(list,k));
     }
     
-       return 0;
+    deque * d = createDeque();
+    for(int i = 0;i<5;i++)
+    {
+        push_front(d, 2*i+1);
+        push_back(d, 2*i);
+    }
+    
+    while(!is_empty_deque(d))
+    {
+        dequeElementT front = pop_front(d);
+        printf("%d \t",front);
+    }
+    
+    for(int i = 0;i<5;i++)
+    {
+        push_front(d, 2*i+1);
+        push_back(d, 2*i);
+    }
+    
+    printf("\n从前往后打印双端队列的值:\n");
+    print_element_front(d);
+    
+    printf("\n从后往前打印双端队列的值:\n");
+    print_element_back(d);
+    
+    
+    while(!is_empty_deque(d))
+    {
+        dequeElementT back = pop_back(d);
+        printf("\n%d",back);
+    }
+    
+    printf("\n双端队列是否为空:%s\n",is_empty_deque(d)?"是":"否");
+    return 0;
 }
